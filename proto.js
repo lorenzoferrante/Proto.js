@@ -10,7 +10,7 @@ function Layer(name) {
 	// The name must be unique for every layer
 	this.name = name
 	// Create a new div with unique id
-    this.div = function() {
+    this.create = function() {
     	newDiv = document.createElement("div")
     	document.body.appendChild(newDiv)
     	newDiv.id = name
