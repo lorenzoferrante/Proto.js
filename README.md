@@ -45,9 +45,9 @@ With <code>center: 'both'</code> you told the framework to center horizontally a
 Now let's talk about animations and events. I decided to use Velocity.js instead of jQuery for its better performance and speed. It's very simple to implement an event. Below the list of the possible (for the moment) animations, and how to use them.
 
 ```javascript
-/* Syntax:
-   layer.events(event_name, property, duration)
-*/
+/* -- SYNTAX -- */
+layer.events(eventName, property, duration)
+/* ------------ */
 layerA.events('x', 200, 2000)
 layerB.events('rotateY', 80, 1000)
 layerB.events('backgroundColor', '#ff00ff', 750)
