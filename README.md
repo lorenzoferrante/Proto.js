@@ -1,4 +1,4 @@
-# Proto.js
+# ![logo](https://cloud.githubusercontent.com/assets/1908782/6525293/2ccbe0e6-c404-11e4-996d-94939d691277.png)
 Coffeescript framework for quickly create web pages and animations. Inspired by <a href="https://github.com/koenbok/Framer">Framer.js</a>.
 
 ## Usage
