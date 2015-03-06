@@ -96,8 +96,8 @@ Let's see what are the available properties for the moment:
 - image -> <code>'cat.png'</code>
 - visible -> <code>true</code> or </code>false</code>
 - opacity -> <code>0.5</code>
-- scale -> <code>1.5</code> 
-    WARNING: Note that the property <code>scale</code> doesn't work if layer has animations. Use the <code>'scale'</code> animation instead: <code>layerB.animate('scale', 2, 2000)</code>
+- scale -> <code>1.5</code> </br>
+    <span style="color: red;">WARNING:</span> Note that the <code>scale</code> property doesn't work if layer has animations. Use this animation instead: <code>layerB.animate('scale', 2, 2000)</code>
 
 ## ![events](https://cloud.githubusercontent.com/assets/1908782/6529069/897e4b36-c426-11e4-87d2-c3d7e03aea94.png)
 
