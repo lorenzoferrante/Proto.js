@@ -66,6 +66,18 @@ layerA.edit('center', 'x');
 layerA.edit('width', 300);
 ```
 
+With <code>delete()</code> function you can delete a layer, or rather set its CSS visibility to hidden. Let's do an other example:
+
+```javascript
+layerA = new Layer('layerA', {
+    width: 200,
+    height: 100,
+    center: 'both'
+  });
+  
+// Delete layerA
+layerA.delete();
+```
 
 ## ![events](https://cloud.githubusercontent.com/assets/1908782/6529069/897e4b36-c426-11e4-87d2-c3d7e03aea94.png)
 
