@@ -1,4 +1,4 @@
-# ![logo](https://cloud.githubusercontent.com/assets/1908782/6525293/2ccbe0e6-c404-11e4-996d-94939d691277.png)
+# ![title](https://cloud.githubusercontent.com/assets/1908782/6525677/ac65df2e-c408-11e4-8edf-f3f8c85ef301.png)
 
 <b>Proto.js</b> is a JavaScript framework for quickly create web pages, animations and interactions. With Proto.js you can define animations with the integration with Velocity.js, that is similar to jQuery but faster. It's bundled with Framer Generator, an application that allows you to import layers directly out of Photoshop and Sketch.
 
