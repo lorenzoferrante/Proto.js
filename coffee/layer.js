@@ -191,3 +191,5 @@
     return BackgroundLayer;
 
   })();
+  
+}).call(this);
