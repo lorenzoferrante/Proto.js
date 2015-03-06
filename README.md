@@ -52,6 +52,8 @@ layerA.events('x', 200, 2000)
 layerB.events('rotateY', 80, 1000)
 layerB.events('backgroundColor', '#ff00ff', 750)
 ```
+
+Here's the list of event's name (updated continuously) :
 - opacity
 - top
 - bottom
