@@ -83,17 +83,17 @@ layerA.delete();
 Let's see what are the available properties for the moment:
 - property -> example
 
-- width -> 200, 300, 15
-- height -> 100, 27, 150
-- backgroundColor -> '#ff32ee'
-- position -> 'absolute, relative, fixed'
-- x (left) -> 20, 440, 0
-- y (top) -> 30, 53, 200
-- z (z-index) -> 11
-- borderRadius -> 30
-- boxShadow -> '2px 1px 10px 4px rgba(0,0,0,0.3)'
-- center -> 'both, x, y'
-- image -> 'cat.png'
+- width -> <code>230</code>
+- height -> <code>100</code>
+- backgroundColor -> <code>'#ff32ee'</code>
+- position -> <code>'absolute</code> & <code>'relative</cod> & <code>'fixed'</code>
+- x (left) -> <code>20</code>
+- y (top) -> <code>0</code>
+- z (z-index) -> <code>11</code>
+- borderRadius -> <code>30</code>
+- boxShadow -> <code>'2px 1px 10px 4px rgba(0,0,0,0.3)'</code>
+- center -> <code>'both'</code> & <code>'x'</code> & <code>'y'</code>
+- image -> <code>'cat.png'</code>
 
 ## ![events](https://cloud.githubusercontent.com/assets/1908782/6529069/897e4b36-c426-11e4-87d2-c3d7e03aea94.png)
 
