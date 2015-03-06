@@ -139,7 +139,7 @@ Here's the list of event's name (updated continuously) :
 Note that <b>Proto.js</b> is currently in Beta version, so if you're using it, probably not everythink will work. However everyday I'm working to improve this amazing and open-source framework. Hope you liked it. Let me know if there's something wrong with the code. 
 Thank you.
 
-Inspiration: <a href="https://github.com/koenbok/Framer">Framer.js</a>
+Inspiration: <a href="https://github.com/koenbok/Framer">Framer.js</a><br/>
 Author: <a href="https://github.com/lorenzoferrante" target="_blank">Lorenzo Ferrante</a>
 
 
