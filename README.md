@@ -26,6 +26,8 @@ Using the keyword <code>new</code>, the framework create a new layer with all th
 <div id="layerA" style="width: 200px; height: 100px; position: absolute; left: 200px; border-radius: 5px; background-color: rgb(239, 213, 90);"></div>
 ```
 
+Here is some examples:
+
 ```javascript
 // Create a layer and center it
 layerA = new Layer('layerA', {
