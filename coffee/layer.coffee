@@ -1,7 +1,7 @@
 # ---------------- TO DO'S ---------------- #
-# ✓ Use Velocity.js for animations 
-# ✓ Don't create a layer with the same id
-# - Edit layer's properties inside functions
+# - Create layers in extern .js file
+# - Insert style property
+# - Add blur effect
 # ----------------------------------------- #
 
 # ------- A U T H O R -------
@@ -31,9 +31,11 @@ $(window).resize ->
 Errors = {
 	sameID: 'Two div have the same id!
 			Change the name in the layer declaration.'
-	wrongCenterValue : 'You inserted a wrong value for the center
+	wrongCenterValue: 'You inserted a wrong value for the center
 			properties. Please check it. The only possibilities
 			are: x, y, both.'
+	wrongVisibleValue: 'Please insert in layers declaration the visible property
+			for correctness.'
 }
 
 # -------------- #
@@ -101,11 +103,14 @@ class Layer
 		boxShadow: @boxShadow
 		center: @center
 		image: @image
+		visible: @visible
+		opacity: @opacity
+		scale: @scale
 	}
 
 	constructor: (@name, @properties) ->
 		# Create new <div> element
-		newDiv = document.createElement 'div' 
+		window.newDiv = document.createElement 'div' 
 		document.body.appendChild newDiv
 		newDiv.id = name
 		# Insert in a temporary var the id name
@@ -157,11 +162,19 @@ class Layer
 		newDiv.style.boxShadow = @properties.boxShadow
 		newDiv.style.backgroundImage = 'url(' + @properties.image + ')'
 
+		# Visible property
+		if @properties.visible == true
+			newDiv.style.visibility = 'visible'
+		if @properties.visible == false
+			newDiv.style.visibility = 'hidden'
+		if @properties.visible != true and @properties.visible != false
+			console.warn Errors.wrongVisibleValue
 
-	# Events
-	@name = name
+		newDiv.style.opacity = @properties.opacity
+		newDiv.style.transform = 'scale(' + @properties.scale + ')'
 
-	events: (event, x, time) ->
+	# Animations
+	animate: (event, x, time) ->
 		switch event
 			when 'opacity'
 				$('#' + @name).velocity({ opacity: x }, time)
@@ -207,7 +220,73 @@ class Layer
 				console.log 'Velocity Event: ' + event
 			when 'boxShadow'
 				$('#' + @name).velocity({ boxShadow: x }, time)
+				console.log 'Velocity Event: ' + event
+			when 'scale'
+				$('#' + @name).velocity({ scale: x }, time)
 				console.log 'Velocity Event: ' + event	
+
+	# Edit properties
+	edit: (property, x) ->
+		switch property
+			when 'width'
+				document.getElementById(@name).style.width = x + 'px'
+				console.log 'Modified: ' + property
+			when 'height'
+				document.getElementById(@name).style.height = x + 'px'
+				console.log 'Modified: ' + property
+			when 'backgroundColor'
+				document.getElementById(@name).style.backgroundColor = x 
+				console.log 'Modified: ' + property
+			when 'position'
+				document.getElementById(@name).style.position = x
+				console.log 'Modified: ' + property
+			when 'x'
+				document.getElementById(@name).style.x = x + 'px'
+				console.log 'Modified: ' + property
+			when 'y'
+				document.getElementById(@name).style.y = x + 'px'
+				console.log 'Modified: ' + property
+			when 'z'
+				document.getElementById(@name).style.z = x + 'px'
+				console.log 'Modified: ' + property
+			when 'borderRadius'
+				document.getElementById(@name).style.borderRadius = x + 'px'
+				console.log 'Modified: ' + property
+			when 'boxShadow'
+				document.getElementById(@name).style.boxShadow = x
+				console.log 'Modified: ' + property
+			when 'center'
+				if x == 'both'
+					screenWidth = $(window).width()
+					screenHeight = $(window).height()
+					widthInt = parseInt(document.getElementById(@name).style.width)
+					heightInt = parseInt(document.getElementById(@name).style.height)
+					centerX = (screenWidth - widthInt) / 2
+					centerY = (screenHeight - heightInt) / 2
+					document.getElementById(@name).style.left = centerX + 'px'
+					document.getElementById(@name).style.top = centerY + 'px'
+				else if x == 'x'
+					screenWidth = $(window).width()
+					widthInt = parseInt(document.getElementById(@name).style.width)
+					centerX = (screenWidth - widthInt) / 2
+					document.getElementById(@name).style.left = centerX + 'px'
+				else if x == 'y'
+					screenWidth = $(window).height()
+					heightInt = parseInt(document.getElementById(@name).style.height)
+					centerY = (screenWidth - heightInt) / 2
+					document.getElementById(@name).style.top = centerY + 'px'
+				else
+					document.getElementById('error').style.visibility = 'visible'
+					console.error Errors.wrongCenterValue
+				console.log 'Modified: ' + property
+			when 'image'
+				document.getElementById(@name).style.width = x + 'px'
+				console.log 'Modified: ' + property
+			
+
+	# Delete layer - make it hidden
+	delete: () ->
+		document.getElementById(@name).style.visibility = 'hidden'
 
 
 # ----------------------- #
@@ -220,7 +299,7 @@ class BackgroundLayer
 		image: @image
 	}
 
-	constructor: (@name, @properties) ->
+	constructor: (@properties) ->
 		# Get the <body> element and set the property
 		body = document.getElementsByTagName('body')[0]
 		body.style.backgroundColor = @properties.backgroundColor
@@ -237,6 +316,7 @@ layerA = new Layer 'layerA',
 	borderRadius: 5
 	position: 'absolute'
 	x: 200
+	blur: true
 
 layerB = new Layer 'layerB',
 	width: 200
@@ -246,13 +326,16 @@ layerB = new Layer 'layerB',
 	position: 'absolute'
 	center: 'both'
 
-bgLayer = new BackgroundLayer 'bgLayer',
+bgLayer = new BackgroundLayer
 	backgroundColor: "#fff"
 
 # ------------------ #
 # --- Try Events --- #
 # ------------------ #
-layerB.events('x', 200, 2000)
-layerB.events('rotateY', 80, 2000)
-layerB.events('backgroundColor', '#ff00ff', 2000)
-
+layerB.animate('scale', 2, 2000)
+	
+# ------------------- #
+# --- Try Editing --- #
+# ------------------- #
+layerA.edit('width', 300)
+layerB.edit('backgroundColor', '#654321')
