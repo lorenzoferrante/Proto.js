@@ -1,5 +1,10 @@
 # ![logo](https://cloud.githubusercontent.com/assets/1908782/6525293/2ccbe0e6-c404-11e4-996d-94939d691277.png)
-Coffeescript framework for quickly create web pages and animations. Inspired by <a href="https://github.com/koenbok/Framer">Framer.js</a>.
+
+<b>Proto.js</b> is a JavaScript framework for quickly create web pages, animations and interactions. With Proto.js you can define animations with the integration with Velocity.js, that is similar to jQuery but faster. It's bundled with Framer Generator, an application that allows you to import layers directly out of Photoshop and Sketch.
+
+I am currently working on a Mac app built on top of Proto.js. The framework is written in Coffeescript, an upgraded and more legible version of Javascript. You can code it in both languages.
+
+Inspired by <a href="https://github.com/koenbok/Framer">Framer.js</a>.
 
 ## Usage
 ```coffeescript
