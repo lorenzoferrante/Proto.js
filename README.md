@@ -105,11 +105,11 @@ Now let's talk about animations and events. I decided to use Velocity.js instead
 
 ```javascript
 /* -- SYNTAX -- */
-layer.events(eventName, property, duration)
+layer.animate(animation_name, animation_property, animation_duration)
 /* -- EXAMPLE -- */
-layerA.events('x', 200, 2000)
-layerB.events('rotateY', 80, 1000)
-layerB.events('backgroundColor', '#ff00ff', 750)
+layerA.animate('x', 200, 2000)
+layerB.animate('rotateY', 80, 1000)
+layerB.animate('backgroundColor', '#ff00ff', 750)
 ```
 
 Here's the list of event's name (updated continuously) :
