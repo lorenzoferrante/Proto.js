@@ -86,7 +86,7 @@ Let's see what are the available properties for the moment:
 - width -> <code>230</code>
 - height -> <code>100</code>
 - backgroundColor -> <code>'#ff32ee'</code>
-- position -> <code>'absolute</code> & <code>'relative</cod> & <code>'fixed'</code>
+- position -> <code>'absolute</code> & <code>'relative</code> & <code>'fixed'</code>
 - x (left) -> <code>20</code>
 - y (top) -> <code>0</code>
 - z (z-index) -> <code>11</code>
