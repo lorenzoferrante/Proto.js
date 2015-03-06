@@ -61,7 +61,7 @@ layerA = new Layer('layerA', {
     center: 'both'
   });
   
-// Change 'center' and width properties
+// Change 'center' and 'width' property
 layerA.edit('center', 'x');
 layerA.edit('width', 300);
 ```
