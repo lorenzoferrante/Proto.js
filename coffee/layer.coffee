@@ -1,8 +1,7 @@
 # ---------------- TO DO'S ---------------- #
-# - Use Velocity.js for animations 
+# ✓ Use Velocity.js for animations 
 # ✓ Don't create a layer with the same id
 # - Edit layer's properties inside functions
-# - Automatically set the var name as the id
 # ----------------------------------------- #
 
 # ------- A U T H O R -------
@@ -83,30 +82,6 @@ if Detect.isPhone()
 if Detect.isTablet()
 	console.log 'Using Tablet'
 
-# -------------- #
-# --- Events --- #
-# -------------- #
-if Detect.isTouch()
-	onTouchStart = "touchstart"
-	onTouchEnd = "touchend"
-	onTouchMove = "touchmove"
-else
-	onTouchStart = "mousedown"
-	onTouchEnd = "mouseup"
-	onTouchMove = "mousemove"
-
-onClick = onTouchEnd
-
-onMouseOver = "mouseover"
-onMouseOut = "mouseout"
-onMouseMove = "mousemove"
-
-onAnimationStart = "start"
-onAnimationStop = "stop"
-onAnimationEnd = "end"
-
-onScroll = "scroll"
-
 # ------------- #
 # --- Layer --- #
 # ------------- #
@@ -182,6 +157,59 @@ class Layer
 		newDiv.style.boxShadow = @properties.boxShadow
 		newDiv.style.backgroundImage = 'url(' + @properties.image + ')'
 
+
+	# Events
+	@name = name
+
+	events: (event, x, time) ->
+		switch event
+			when 'opacity'
+				$('#' + @name).velocity({ opacity: x }, time)
+				console.log 'Velocity Event: ' + event
+			when 'top'
+				$('#' + @name).velocity({ top: x + 'px' }, time)
+				console.log 'Velocity Event: ' + event
+			when 'bottom'
+				$('#' + @name).velocity({ bottom: x + 'px' }, time)
+				console.log 'Velocity Event: ' + event
+			when 'x'
+				$('#' + @name).velocity({ left: x + 'px' }, time)
+				console.log 'Velocity Event: ' + event
+			when 'y'
+				$('#' + @name).velocity({ right: x + 'px' }, time)
+				console.log 'Velocity Event: ' + event
+			when 'translateX'
+				$('#' + @name).velocity({ translateX: x }, time)
+				console.log 'Velocity Event: ' + event
+			when 'translateY'
+				$('#' + @name).velocity({ translateY: x }, time)
+				console.log 'Velocity Event: ' + event
+			when 'rotateZ'
+				$('#' + @name).velocity({ rotateZ: x }, time)
+				console.log 'Velocity Event: ' + event
+			when 'rotateX'
+				$('#' + @name).velocity({ rotateX: x }, time)
+				console.log 'Velocity Event: ' + event
+			when 'rotateY'
+				$('#' + @name).velocity({ rotateY: x }, time)
+				console.log 'Velocity Event: ' + event
+			when 'width'
+				$('#' + @name).velocity({ width: x }, time)
+				console.log 'Velocity Event: ' + event
+			when 'height'
+				$('#' + @name).velocity({ height: x }, time)
+				console.log 'Velocity Event: ' + event
+			when 'backgroundColor'
+				$('#' + @name).velocity({ backgroundColor: x }, time)
+				console.log 'Velocity Event: ' + event
+			when 'borderRadius'
+				$('#' + @name).velocity({ borderRadius: x }, time)
+				console.log 'Velocity Event: ' + event
+			when 'boxShadow'
+				$('#' + @name).velocity({ boxShadow: x }, time)
+				console.log 'Velocity Event: ' + event	
+
+
 # ----------------------- #
 # --- BackgroundLayer --- #
 # ----------------------- #
@@ -197,3 +225,34 @@ class BackgroundLayer
 		body = document.getElementsByTagName('body')[0]
 		body.style.backgroundColor = @properties.backgroundColor
 		body.style.backgroundImage = 'url(' + @properties.image + ')'
+
+
+# ------------------ #
+# --- Try Layers --- #
+# ------------------ #
+layerA = new Layer 'layerA',
+	width: 200
+	height: 100
+	backgroundColor: '#efd55a'
+	borderRadius: 5
+	position: 'absolute'
+	x: 200
+
+layerB = new Layer 'layerB',
+	width: 200
+	height: 100
+	backgroundColor: '#12ddce'
+	borderRadius: 20
+	position: 'absolute'
+	center: 'both'
+
+bgLayer = new BackgroundLayer 'bgLayer',
+	backgroundColor: "#fff"
+
+# ------------------ #
+# --- Try Events --- #
+# ------------------ #
+layerB.events('x', 200, 2000)
+layerB.events('rotateY', 80, 2000)
+layerB.events('backgroundColor', '#ff00ff', 2000)
+
