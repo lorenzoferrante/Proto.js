@@ -12,7 +12,8 @@
 
   Errors = {
     sameID: 'Two div have the same id! Change the name in the layer declaration.',
-    wrongCenterValue: 'You inserted a wrong value for the center properties. Please check it. The only possibilities are: x, y, both.'
+    wrongCenterValue: 'You inserted a wrong value for the center properties. Please check it. The only possibilities are: x, y, both.',
+    wrongVisibleValue: 'Please insert in layers declaration the visible property for correctness.'
   };
 
   Detect = {};
@@ -91,14 +92,17 @@
       borderRadius: Layer.borderRadius,
       boxShadow: Layer.boxShadow,
       center: Layer.center,
-      image: Layer.image
+      image: Layer.image,
+      visible: Layer.visible,
+      opacity: Layer.opacity,
+      scale: Layer.scale
     };
 
     function Layer(name, properties) {
-      var centerX, centerY, heightInt, i, newDiv, screenHeight, screenWidth, tempId, widthInt, _i, _ref;
+      var centerX, centerY, heightInt, i, screenHeight, screenWidth, tempId, widthInt, _i, _ref;
       this.name = name;
       this.properties = properties;
-      newDiv = document.createElement('div');
+      window.newDiv = document.createElement('div');
       document.body.appendChild(newDiv);
       newDiv.id = name;
       tempId = name;
@@ -141,11 +145,20 @@
       newDiv.style.borderRadius = this.properties.borderRadius + 'px';
       newDiv.style.boxShadow = this.properties.boxShadow;
       newDiv.style.backgroundImage = 'url(' + this.properties.image + ')';
+      if (this.properties.visible === true) {
+        newDiv.style.visibility = 'visible';
+      }
+      if (this.properties.visible === false) {
+        newDiv.style.visibility = 'hidden';
+      }
+      if (this.properties.visible !== true && this.properties.visible !== false) {
+        console.warn(Errors.wrongVisibleValue);
+      }
+      newDiv.style.opacity = this.properties.opacity;
+      newDiv.style.transform = 'scale(' + this.properties.scale + ')';
     }
 
-    Layer.name = name;
-
-    Layer.prototype.events = function(event, x, time) {
+    Layer.prototype.animate = function(event, x, time) {
       switch (event) {
         case 'opacity':
           $('#' + this.name).velocity({
@@ -222,7 +235,77 @@
             boxShadow: x
           }, time);
           return console.log('Velocity Event: ' + event);
+        case 'scale':
+          $('#' + this.name).velocity({
+            scale: x
+          }, time);
+          return console.log('Velocity Event: ' + event);
       }
+    };
+
+    Layer.prototype.edit = function(property, x) {
+      var centerX, centerY, heightInt, screenHeight, screenWidth, widthInt;
+      switch (property) {
+        case 'width':
+          document.getElementById(this.name).style.width = x + 'px';
+          return console.log('Modified: ' + property);
+        case 'height':
+          document.getElementById(this.name).style.height = x + 'px';
+          return console.log('Modified: ' + property);
+        case 'backgroundColor':
+          document.getElementById(this.name).style.backgroundColor = x;
+          return console.log('Modified: ' + property);
+        case 'position':
+          document.getElementById(this.name).style.position = x;
+          return console.log('Modified: ' + property);
+        case 'x':
+          document.getElementById(this.name).style.x = x + 'px';
+          return console.log('Modified: ' + property);
+        case 'y':
+          document.getElementById(this.name).style.y = x + 'px';
+          return console.log('Modified: ' + property);
+        case 'z':
+          document.getElementById(this.name).style.z = x + 'px';
+          return console.log('Modified: ' + property);
+        case 'borderRadius':
+          document.getElementById(this.name).style.borderRadius = x + 'px';
+          return console.log('Modified: ' + property);
+        case 'boxShadow':
+          document.getElementById(this.name).style.boxShadow = x;
+          return console.log('Modified: ' + property);
+        case 'center':
+          if (x === 'both') {
+            screenWidth = $(window).width();
+            screenHeight = $(window).height();
+            widthInt = parseInt(document.getElementById(this.name).style.width);
+            heightInt = parseInt(document.getElementById(this.name).style.height);
+            centerX = (screenWidth - widthInt) / 2;
+            centerY = (screenHeight - heightInt) / 2;
+            document.getElementById(this.name).style.left = centerX + 'px';
+            document.getElementById(this.name).style.top = centerY + 'px';
+          } else if (x === 'x') {
+            screenWidth = $(window).width();
+            widthInt = parseInt(document.getElementById(this.name).style.width);
+            centerX = (screenWidth - widthInt) / 2;
+            document.getElementById(this.name).style.left = centerX + 'px';
+          } else if (x === 'y') {
+            screenWidth = $(window).height();
+            heightInt = parseInt(document.getElementById(this.name).style.height);
+            centerY = (screenWidth - heightInt) / 2;
+            document.getElementById(this.name).style.top = centerY + 'px';
+          } else {
+            document.getElementById('error').style.visibility = 'visible';
+            console.error(Errors.wrongCenterValue);
+          }
+          return console.log('Modified: ' + property);
+        case 'image':
+          document.getElementById(this.name).style.width = x + 'px';
+          return console.log('Modified: ' + property);
+      }
+    };
+
+    Layer.prototype["delete"] = function() {
+      return document.getElementById(this.name).style.visibility = 'hidden';
     };
 
     return Layer;
@@ -235,9 +318,8 @@
       image: BackgroundLayer.image
     };
 
-    function BackgroundLayer(name, properties) {
+    function BackgroundLayer(properties) {
       var body;
-      this.name = name;
       this.properties = properties;
       body = document.getElementsByTagName('body')[0];
       body.style.backgroundColor = this.properties.backgroundColor;
@@ -254,7 +336,8 @@
     backgroundColor: '#efd55a',
     borderRadius: 5,
     position: 'absolute',
-    x: 200
+    x: 200,
+    blur: true
   });
 
   layerB = new Layer('layerB', {
@@ -266,14 +349,14 @@
     center: 'both'
   });
 
-  bgLayer = new BackgroundLayer('bgLayer', {
+  bgLayer = new BackgroundLayer({
     backgroundColor: "#fff"
   });
 
-  layerB.events('x', 200, 2000);
+  layerB.animate('scale', 2, 2000);
 
-  layerB.events('rotateY', 80, 2000);
+  layerA.edit('width', 300);
 
-  layerB.events('backgroundColor', '#ff00ff', 2000);
+  layerB.edit('backgroundColor', '#654321');
 
 }).call(this);
