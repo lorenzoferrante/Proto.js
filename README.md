@@ -6,7 +6,8 @@ I am currently working on a Mac app built on top of Proto.js. The framework is w
 
 Inspired by <a href="https://github.com/koenbok/Framer">Framer.js</a>.
 
-## Usage
+## ![usage](https://cloud.githubusercontent.com/assets/1908782/6525384/3c5a0230-c405-11e4-8a60-d563c9f97e4c.png)
+
 ```coffeescript
 layerA = new Layer 'layerA',
 	width: '200px'
