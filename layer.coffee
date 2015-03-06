@@ -1,9 +1,8 @@
 # ---------------- TO DO'S ---------------- #
-# - Simplify javascript or jQuery Events 
+# - Use Velocity.js for animations 
 # ✓ Don't create a layer with the same id
 # - Edit layer's properties inside functions
 # - Automatically set the var name as the id
-# - Recognize Chrome from Safari
 # ----------------------------------------- #
 
 # ------- A U T H O R -------
@@ -21,13 +20,10 @@
 
 # Require jQuery file
 require ['./js/jquery.min'], (dependency) ->
-# Reload window on resize
-dimensions = () ->
-	screenWidth = $(window).width()
-	screenHeight = $(window).height()
+require ['./js/velocity.min'], (dependency) ->
 
+# Reload window on resize
 $(window).resize ->
-	dimensions()
 	location.reload()
 
 # -------------- #
@@ -57,7 +53,7 @@ Utils.deviceType = ->
 	return "desktop"
 
 Detect.isChrome = ->
-	(/chrome/).test(navigator.userAgent.toLowerCase())
+	(/chrom(e|ium)/).test(navigator.userAgent.toLowerCase())
 
 Detect.isSafari = ->
 	(/safari/).test(navigator.userAgent.toLowerCase())
@@ -119,16 +115,17 @@ idArray = []
 class Layer
 	# Define layer's properties
 	@properties = {
-		width: @width,
-		height: @height,
-		backgroundColor: @backgroundColor,
-		position: @position,
-		x: @x,
-		y: @y,
-		z: @z,
-		borderRadius: @borderRadius,
-		boxShadow: @boxShadow,
+		width: @width
+		height: @height
+		backgroundColor: @backgroundColor
+		position: @position
+		x: @x
+		y: @y
+		z: @z
+		borderRadius: @borderRadius
+		boxShadow: @boxShadow
 		center: @center
+		image: @image
 	}
 
 	constructor: (@name, @properties) ->
@@ -143,15 +140,15 @@ class Layer
 		for i in [0...idArray.length]
 			if tempId == idArray[i]
 				console.error Errors.sameID
-				alert Errors.sameID
+				document.getElementById('error').style.visibility = 'visible'
 
 		# Insert every id in the array
 		idArray.push(tempId)
 		console.log idArray
 
-		# Set CSS properties to array elements
-		newDiv.style.width = @properties.width
-		newDiv.style.height = @properties.height
+		# Set CSS properties
+		newDiv.style.width = (@properties.width).toString() + 'px'
+		newDiv.style.height = (@properties.height).toString() + 'px'
 		newDiv.style.backgroundColor = @properties.backgroundColor
 		newDiv.style.position = @properties.position
 		# Center the layer
@@ -175,14 +172,15 @@ class Layer
 			centerY = (screenWidth - heightInt) / 2
 			newDiv.style.top = centerY + 'px'
 		else
-			console.error Errors.wrongCenterValue
+			#console.error Errors.wrongCenterValue
 			#alert Errors.wrongCenterValue
-			newDiv.style.left = @properties.x
-			newDiv.style.top = @properties.y
+			newDiv.style.left = (@properties.x) + 'px'
+			newDiv.style.top = (@properties.y) + 'px'
 
-		newDiv.style.zIndex = @properties.z
-		newDiv.style.borderRadius = @properties.borderRadius
+		newDiv.style.zIndex = (@properties.z) + 'px'
+		newDiv.style.borderRadius = (@properties.borderRadius) + 'px'
 		newDiv.style.boxShadow = @properties.boxShadow
+		newDiv.style.backgroundImage = 'url(' + @properties.image + ')'
 
 # ----------------------- #
 # --- BackgroundLayer --- #
@@ -190,37 +188,12 @@ class Layer
 class BackgroundLayer
 	# Define layer's properties
 	@properties = {
-		backgroundColor: @backgroundColor
+		backgroundColor: @backgroundColor,
+		image: @image
 	}
 
 	constructor: (@name, @properties) ->
 		# Get the <body> element and set the property
 		body = document.getElementsByTagName('body')[0]
 		body.style.backgroundColor = @properties.backgroundColor
-
-
-# ------------------ #
-# --- Try Layers --- #
-# ------------------ #
-layerA = new Layer 'layerA',
-	width: '200px'
-	height: '100px'
-	backgroundColor: '#efd55a'
-	borderRadius: '5px'
-	position: 'absolute'
-	x: '200px'
-
-layerB = new Layer 'layerB',
-	width: '200px'
-	height: '100px'
-	backgroundColor: '#12ddce'
-	borderRadius: '0px'
-	position: 'absolute'
-	center: 'both'
-
-bgLayer = new BackgroundLayer 'bgLayer',
-	backgroundColor: "#fff"
-
-# ------------------ #
-# --- Try Events --- #
-# ------------------ #
+		body.style.backgroundImage = 'url(' + @properties.image + ')'
