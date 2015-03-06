@@ -4,7 +4,7 @@
 
 I am currently working on a Mac app built on top of Proto.js. The framework is written in Coffeescript, an upgraded and more legible version of Javascript. You can code it in both languages.
 
-Inspired by <a href="https://github.com/koenbok/Framer">Framer.js</a>.
+Inspired by <a href="https://github.com/koenbok/Framer">Framer.js</a>
 
 ## ![usage](https://cloud.githubusercontent.com/assets/1908782/6525384/3c5a0230-c405-11e4-8a60-d563c9f97e4c.png)
 Using Proto.js is very simple. It is based on layers that are like html <code>div</code>. You have lots of properties you can define. Here is an example of how to create a new layer:
