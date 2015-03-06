@@ -20,7 +20,11 @@ layerA = new Layer('layerA', {
   });
 ```
 
-Using the keyword <code>new</code>, the framework create a new layer with all the properties you declared. Before declaring properties, you must have to name the layer. The layer's name is also its html <code>id</code>, so you will be able to access it later with transitions and animations.
+Using the keyword <code>new</code>, the framework create a new layer with all the properties you declared. Before declaring properties, you must have to name the layer. The layer's name is also its html <code>id</code>, so you will be able to access it later with transitions and animations. Here's what the code above creates in the html page:
+
+```html
+<div id="layerA" style="width: 200px; height: 100px; position: absolute; left: 200px; border-radius: 5px; background-color: rgb(239, 213, 90);"></div>
+```
 
 ```javascript
 // Create a layer and center it
