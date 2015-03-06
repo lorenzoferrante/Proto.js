@@ -11,12 +11,12 @@ Using Proto.js is very simple. It is based on layers that are like html <code>di
 
 ```javascript
 layerA = new Layer('layerA', {
-    width: '200px',
-    height: '100px',
+    width: 200,
+    height: 100,
     backgroundColor: '#efd55a',
-    borderRadius: '5px',
+    borderRadius: 5,
     position: 'absolute',
-    x: '200px'
+    x: 200
   });
 ```
 
@@ -31,8 +31,8 @@ Here is some examples:
 ```javascript
 // Create a layer and center it
 layerA = new Layer('layerA', {
-    width: '200px',
-    height: '100px',
+    width: 200',
+    height: 100,
     center: 'both'
   });
 ```
