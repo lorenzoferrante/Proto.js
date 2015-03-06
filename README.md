@@ -78,6 +78,22 @@ layerA = new Layer('layerA', {
 // Delete layerA
 layerA.delete();
 ```
+## ![properties](https://cloud.githubusercontent.com/assets/1908782/6535029/27edbade-c442-11e4-836c-99f0e97780d1.png)
+
+Let's see what are the available properties for the moment:
+- property -> example
+
+- width -> 200, 300, 15
+- height -> 100, 27, 150
+- backgroundColor -> '#ff32ee'
+- position -> 'absolute, relative, fixed'
+- x (left) -> 20, 440, 0
+- y (top) -> 30, 53, 200
+- z (z-index) -> 11
+- borderRadius -> 30
+- boxShadow -> '2px 1px 10px 4px rgba(0,0,0,0.3)'
+- center -> 'both, x, y'
+- image -> 'cat.png'
 
 ## ![events](https://cloud.githubusercontent.com/assets/1908782/6529069/897e4b36-c426-11e4-87d2-c3d7e03aea94.png)
 
