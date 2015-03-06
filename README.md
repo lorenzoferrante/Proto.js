@@ -52,6 +52,21 @@ With <code>center: 'both'</code> you told the framework to center horizontally a
 - <code>center: 'y'</code> that center it only vertically
 - <code>center: 'both'</code> that center it both vertically and horizontally
 
+With <code>edit()</code> function you can easily change layer's properties after declaration. Here is an example:
+
+```javascript
+layerA = new Layer('layerA', {
+    width: 200,
+    height: 100,
+    center: 'both'
+  });
+  
+// Change 'center' and width properties
+layerA.edit('center', 'x');
+layerA.edit('width', 300);
+```
+
+
 ## ![events](https://cloud.githubusercontent.com/assets/1908782/6529069/897e4b36-c426-11e4-87d2-c3d7e03aea94.png)
 
 Now let's talk about animations and events. I decided to use Velocity.js instead of jQuery for its better performance and speed. It's very simple to implement an event. Below the list of the possible (for the moment) animations, and how to use them.
