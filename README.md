@@ -26,7 +26,17 @@ Using the keyword <code>new</code>, the framework create a new layer with all th
 <div id="layerA" style="width: 200px; height: 100px; position: absolute; left: 200px; border-radius: 5px; background-color: rgb(239, 213, 90);"></div>
 ```
 
-Here is some examples:
+There is also a <code>BackgroundLayer</code> that is similar to html <code>body</code> tag. Its properties are <code>backgroundColor</code> and <code>image</code>. The second sets the image as a backround-image. When declaring it, you doesn't need to specific the layer's name. Here is an example declaration:
+
+```javascript
+// Create a BackgroundLayer
+layerA = new BackgroundLayer({
+    backgroundColor: '#fff',
+    image: 'nature.png'
+});
+```
+
+Now let's see some other layer's declaration examples:
 
 ```javascript
 // Create a layer and center it
