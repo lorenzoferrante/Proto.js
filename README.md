@@ -47,7 +47,7 @@ Now let's talk about animations and events. I decided to use Velocity.js instead
 ```javascript
 /* -- SYNTAX -- */
 layer.events(eventName, property, duration)
-/* ------------ */
+/* -- EXAMPLE -- */
 layerA.events('x', 200, 2000)
 layerB.events('rotateY', 80, 1000)
 layerB.events('backgroundColor', '#ff00ff', 750)
