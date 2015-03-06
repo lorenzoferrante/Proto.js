@@ -86,14 +86,18 @@ Let's see what are the available properties for the moment:
 - width -> <code>230</code>
 - height -> <code>100</code>
 - backgroundColor -> <code>'#ff32ee'</code>
-- position -> <code>'absolute</code> & <code>'relative</code> & <code>'fixed'</code>
+- position -> <code>'absolute</code> or <code>'relative</code> or <code>'fixed'</code>
 - x (left) -> <code>20</code>
 - y (top) -> <code>0</code>
 - z (z-index) -> <code>11</code>
 - borderRadius -> <code>30</code>
 - boxShadow -> <code>'2px 1px 10px 4px rgba(0,0,0,0.3)'</code>
-- center -> <code>'both'</code> & <code>'x'</code> & <code>'y'</code>
+- center -> <code>'both'</code> or <code>'x'</code> or <code>'y'</code>
 - image -> <code>'cat.png'</code>
+- visible -> <code>true</code> or </code>false</code>
+- opacity -> <code>0.5</code>
+- scale -> <code>1.5</code> 
+    WARNING: Note that the property <code>scale</code> doesn't work if layer has animations. Use the <code>'scale'</code> animation instead: <code>layerB.animate('scale', 2, 2000)</code>
 
 ## ![events](https://cloud.githubusercontent.com/assets/1908782/6529069/897e4b36-c426-11e4-87d2-c3d7e03aea94.png)
 
@@ -124,6 +128,7 @@ Here's the list of event's name (updated continuously) :
 - backgroundColor
 - borderRadius
 - boxShadow
+- scale
 
 <!--[layers](https://cloud.githubusercontent.com/assets/1908782/6525190/d9ca43a2-c402-11e4-8a43-df73467d71a9.png)
 [layers01](https://cloud.githubusercontent.com/assets/1908782/6525207/0c32e36c-c403-11e4-9616-d2dd00e290d0.png)
