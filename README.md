@@ -7,7 +7,7 @@ The framework is written in Coffeescript, an upgraded and more legible version o
 I've been inspired by the great <a href="https://github.com/koenbok/Framer">Framer.js</a>
 
 ## ![start](https://cloud.githubusercontent.com/assets/1908782/6541184/4e91e2e2-c4c3-11e4-8b07-7c97324ba3e2.png)
-* Download Proto.js folder
+* [Download](https://github.com/lorenzoferrante/Proto.js/archive/download.zip) Proto.js folder
 * Edit app.js (add layers and animations)
 * Open index.html in your browser
 
