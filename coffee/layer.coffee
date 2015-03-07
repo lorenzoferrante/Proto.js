@@ -1,14 +1,14 @@
 # ---------------- TO DO'S ---------------- #
-# - Create layers in extern .js file
 # - Insert style property
 # - Add blur effect
+# - Add Text layer
 # ----------------------------------------- #
 
 # ------- A U T H O R -------
 # ---------------------------
 # - Lorenzo Ferrante © 2015 -
 # --------- Proto.js --------
-# --------- v. 1.5.0 --------
+# --------- v. 1.6.0 --------
 # ---------------------------
 # ------- A U T H O R -------
 
@@ -139,18 +139,23 @@ class Layer
 			heightInt = parseInt(@properties.height)
 			centerX = (screenWidth - widthInt) / 2
 			centerY = (screenHeight - heightInt) / 2
+			newDiv.style.position = 'absolute'
 			newDiv.style.left = centerX + 'px'
 			newDiv.style.top = centerY + 'px'
 		else if @properties.center == 'x'
 			screenWidth = $(window).width()
 			widthInt = parseInt(@properties.width)
 			centerX = (screenWidth - widthInt) / 2
+			newDiv.style.position = 'absolute'
 			newDiv.style.left = centerX + 'px'
+			newDiv.style.top = (@properties.y) + 'px'
 		else if @properties.center == 'y'
 			screenWidth = $(window).height()
 			heightInt = parseInt(@properties.height)
 			centerY = (screenWidth - heightInt) / 2
+			newDiv.style.position = 'absolute'
 			newDiv.style.top = centerY + 'px'
+			newDiv.style.left = (@properties.x) + 'px'
 		else
 			#console.error Errors.wrongCenterValue
 			#alert Errors.wrongCenterValue
@@ -305,37 +310,3 @@ class BackgroundLayer
 		body.style.backgroundColor = @properties.backgroundColor
 		body.style.backgroundImage = 'url(' + @properties.image + ')'
 
-
-# ------------------ #
-# --- Try Layers --- #
-# ------------------ #
-layerA = new Layer 'layerA',
-	width: 200
-	height: 100
-	backgroundColor: '#efd55a'
-	borderRadius: 5
-	position: 'absolute'
-	x: 200
-	blur: true
-
-layerB = new Layer 'layerB',
-	width: 200
-	height: 100
-	backgroundColor: '#12ddce'
-	borderRadius: 20
-	position: 'absolute'
-	center: 'both'
-
-bgLayer = new BackgroundLayer
-	backgroundColor: "#fff"
-
-# ------------------ #
-# --- Try Events --- #
-# ------------------ #
-layerB.animate('scale', 2, 2000)
-	
-# ------------------- #
-# --- Try Editing --- #
-# ------------------- #
-layerA.edit('width', 300)
-layerB.edit('backgroundColor', '#654321')
