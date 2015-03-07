@@ -164,8 +164,10 @@ easeReverse = [0, .99, 1, .01];
 
 ## ![beta](https://cloud.githubusercontent.com/assets/1908782/6536460/0e7d79d4-c44e-11e4-91d2-86d4dc709bb1.png)
 
-Note that <b>Proto.js</b> is currently in Beta version, so if you're using it, probably not everythink will work. However everyday I'm working to improve this amazing and open-source framework. Hope you liked it. Let me know if there's something wrong with the code. 
+Note that <b>Proto.js</b> is currently in Beta version, so if you're using it, probably not everythink will work. However everyday I'm working to improve this amazing and open-source framework. Hope you liked it. Let me know if there's something wrong with the code.
 Thank you.
+
+Read the [Changelog](https://github.com/lorenzoferrante/Proto.js/blob/master/changelog.md) for more information.
 
 Inspiration: <a href="https://github.com/koenbok/Framer">Framer.js</a><br/>
 Author: <a href="https://github.com/lorenzoferrante" target="_blank">Lorenzo Ferrante</a>
