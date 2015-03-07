@@ -137,6 +137,27 @@ Here's the list of event's name (updated continuously) :
 - boxShadow
 - scale
 
+Animation also have easing functions and they are specified in the fourth animation function's parameter. So an animation with easing will be: 
+
+```javascript
+layerB.animate('x', 500, 2000, [.07, .68, .62, .59])
+```
+
+Proto.js has five standard easing functions that you can easily use when animating:
+
+![easing](https://cloud.githubusercontent.com/assets/1908782/6541572/61302c08-c4da-11e4-8050-78d69328a873.png)
+
+In order, they match to:
+
+```javascript
+linear = [0, 0, 1, 1];
+ease = [.25, .1, .25, 1];
+easeIn = [.42, 0, 1, 1];
+easeOut = [0, 0, .58, 1];
+easeInOut = [.42, 0, .58, 1];
+easeReverse = [0, .99, 1, .01];
+```
+
 <!--[layers](https://cloud.githubusercontent.com/assets/1908782/6525190/d9ca43a2-c402-11e4-8a43-df73467d71a9.png)
 [layers01](https://cloud.githubusercontent.com/assets/1908782/6525207/0c32e36c-c403-11e4-9616-d2dd00e290d0.png)
 [layers02](https://cloud.githubusercontent.com/assets/1908782/6525215/2979f618-c403-11e4-824c-d2e2fba7fd51.png)-->
