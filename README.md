@@ -11,7 +11,7 @@ I've been inspired by the great <a href="https://github.com/koenbok/Framer">Fram
 * Edit app.js (add layers and animations)
 * Open index.html in your browser
 
-![folder](https://cloud.githubusercontent.com/assets/1908782/6541196/04a435d0-c4c4-11e4-88fe-f1474603a065.png)
+![folder](https://cloud.githubusercontent.com/assets/1908782/6541201/42737bfa-c4c4-11e4-8985-bab768bd56a3.png)
 
 ## ![usage](https://cloud.githubusercontent.com/assets/1908782/6525384/3c5a0230-c405-11e4-8a60-d563c9f97e4c.png)
 Using Proto.js is very simple. It is based on layers that are like html <code>div</code>. You have lots of properties you can define. Here is an example of how to create a new layer:
