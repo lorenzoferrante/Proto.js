@@ -69,8 +69,11 @@ layerA = new Layer('layerA', {
   });
   
 // Change 'center' and 'width' property
-layerA.edit('center', 'x');
-layerA.edit('width', 300);
+layerA.edit({
+    width: 150,
+    center: 'x',
+    opacity: 0.8
+});
 ```
 
 With <code>delete()</code> function you can delete a layer, or rather set its CSS visibility to hidden. Let's do an other example:
@@ -85,6 +88,17 @@ layerA = new Layer('layerA', {
 // Delete layerA
 layerA.delete();
 ```
+
+The <code>superLayer()</code> function define the hierarchy of two layers. The parameter is the parent layer. Here is an example:
+
+```javascript
+layerA = new Layer('layerA',{})
+layerB = new Layer('layerB',{})
+
+// layerB became a child of layerA
+layerB.superLayer('layerA')
+```
+
 ## ![properties](https://cloud.githubusercontent.com/assets/1908782/6535029/27edbade-c442-11e4-836c-99f0e97780d1.png)
 
 Let's see what are the available properties for the moment:
