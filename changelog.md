@@ -1,5 +1,8 @@
 ## CHANGELOG
 
+* v. 1.6.5
+  * Changed <code>edit()</code> function. Now can edit multiple properties in the same function
+
 * v. 1.6.0 
   * Fixed bug when changing center property in <code>edit()</code>
   * Added **easing** functions
