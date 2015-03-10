@@ -176,6 +176,14 @@ easeReverse = [0, .99, 1, .01];
 [layers01](https://cloud.githubusercontent.com/assets/1908782/6525207/0c32e36c-c403-11e4-9616-d2dd00e290d0.png)
 [layers02](https://cloud.githubusercontent.com/assets/1908782/6525215/2979f618-c403-11e4-824c-d2e2fba7fd51.png)-->
 
+There is also the <code>include()</code> method that allows to include external Javascript libraries from the web. Here's how:
+
+```javascript
+// Include Angular.js in your project
+include('http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.5/angular-resource.js')
+```
+
+
 ## ![beta](https://cloud.githubusercontent.com/assets/1908782/6536460/0e7d79d4-c44e-11e4-91d2-86d4dc709bb1.png)
 
 Note that <b>Proto.js</b> is currently in Beta version, so if you're using it, probably not everythink will work. However everyday I'm working to improve this amazing and open-source framework. Hope you liked it. Let me know if there's something wrong with the code.
