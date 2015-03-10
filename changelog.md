@@ -1,5 +1,9 @@
 ## CHANGELOG
 
+* v. 1.7.0
+  * Now the <code>animate()</code> method supports simultaneous animations
+  * Minor bug fixes
+
 * v. 1.6.5
   * Changed <code>edit()</code> function. Now can edit multiple properties in the same function
 
