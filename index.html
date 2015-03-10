@@ -1117,36 +1117,36 @@ layerB.superLayer('layerA')
     <br/><b>WARNING:</b> Note that the <code>scale</code> property doesn&rsquo;t work if layer has animations. Use this animation instead: <code>layer.animate(&lsquo;scale&rsquo;, 2, 2000)</code></li>
 </ul>
 <h2 id="_5"><img alt="events" src="https://cloud.githubusercontent.com/assets/1908782/6529069/897e4b36-c426-11e4-87d2-c3d7e03aea94.png" /></h2>
-<p>Now let&rsquo;s talk about animations and events. I decided to use Velocity.js instead of jQuery for its better performance and speed. It&rsquo;s very simple to implement an event. Below the list of the possible (for the moment) animations, and how to use them.</p>
-<pre><code class="javascript">/* -- SYNTAX -- */
-layer.animate(animation_name, animation_property, animation_duration)
+<p>Now let&rsquo;s talk about animations and events. I decided to use Velocity.js instead of jQuery for its better performance and speed. It&rsquo;s very simple to implement an animation. Below the list of the possible (for the moment) animations, and how to use them.</p>
+<p><pre><code class="javascript">/* -- SYNTAX -- */
+layer.animate({ name : value }, time, easing)
 /* -- EXAMPLE -- */
-layerA.animate('x', 200, 2000)
-layerB.animate('rotateY', 80, 1000)
-layerB.animate('backgroundColor', '#ff00ff', 750)
+layerA.animate({ width: 100 }, 1, linear)
+</code></pre><br />
+It&rsquo;s also possible to have simultaneous animations: </p>
+<pre><code class="javascript">layerA.animate({ 
+    width: 100,
+    height: 200, 
+    backgroundColor: '#009688',
+    rotateZ: 45
+}, 2, easeInOut)
 </code></pre>
 
-<p>Here&rsquo;s the list of event&rsquo;s name (updated continuously) :<br />
+<p>Here&rsquo;s the list of animations&rsquo; name (updated continuously) :<br />
+- width<br />
+- height<br />
 - opacity<br />
 - top<br />
 - bottom<br />
-- x<br />
-- y<br />
-- translateX<br />
-- translateY<br />
+- left<br />
+- right<br />
 - rotateX<br />
 - rotateY<br />
 - rotateZ<br />
-- width<br />
-- height<br />
 - backgroundColor<br />
 - borderRadius<br />
 - boxShadow<br />
 - scale</p>
-<p>Animation also have easing functions and they are specified in the fourth animation function&rsquo;s parameter. So an animation with easing will be: </p>
-<pre><code class="javascript">layerB.animate('x', 500, 2000, [.07, .68, .62, .59])
-</code></pre>
-
 <p>Proto.js has five standard easing functions that you can easily use when animating:</p>
 <p><img alt="easing" src="https://cloud.githubusercontent.com/assets/1908782/6541572/61302c08-c4da-11e4-8050-78d69328a873.png" /></p>
 <p>In order, they match to:</p>
