@@ -7,7 +7,7 @@
 # ---------------------------
 # - Lorenzo Ferrante © 2015 -
 # --------- Proto.js --------
-# --------- v. 1.7.0 --------
+# --------- v. 1.7.5 --------
 # ---------------------------
 # ------- A U T H O R -------
 
@@ -23,6 +23,14 @@ require ['./js/velocity.min'], (dependency) ->
 # Reload window on resize
 $(window).resize ->
 	location.reload()
+
+# ----------------------- #
+# --- Require Modules --- #
+# ----------------------- #
+include = (url) ->
+	$.getScript url, () ->
+	  console.log 'URL Required.'
+
 
 # -------------- #
 # --- Errors --- #
@@ -87,7 +95,9 @@ if Detect.isTablet()
 # --- Gloabal Vars --- #
 # -------------------- #
 screenWidth = window.innerWidth
-screenHeight = $(document).height()
+screenHeight = window.innerHeight
+
+idArray = []
 
 linear = [0, 0, 1, 1]
 ease = [.25, .1, .25, 1]
@@ -99,8 +109,6 @@ easeReverse = [0, .99, 1, .01]
 # ------------- #
 # --- Layer --- #
 # ------------- #
-idArray = []
-
 class Layer
 	# Define layer's properties
 	@properties = {
@@ -136,12 +144,21 @@ class Layer
 
 		# Insert every id in the array
 		idArray.push(tempId)
-		console.log idArray
+		console.log idArray		
 
 		# Set CSS properties
-		newDiv.style.width = (@properties.width).toString() + 'px'
-		newDiv.style.height = (@properties.height).toString() + 'px'
+		newDiv.style.width = (@properties.width) + 'px'
+		if !newDiv.style.width  
+			newDiv.style.width = '100px'
+
+		newDiv.style.height = (@properties.height) + 'px'
+		if !newDiv.style.height  
+			newDiv.style.height = '100px'
+
 		newDiv.style.backgroundColor = @properties.backgroundColor
+		if !newDiv.style.backgroundColor  
+			newDiv.style.backgroundColor = 'rgba(0, 151, 255, 0.57)'
+
 		newDiv.style.position = 'absolute'
 		# Center the layer
 		if @properties.center == 'both'
@@ -177,7 +194,10 @@ class Layer
 		newDiv.style.zIndex = (@properties.z) + 'px'
 		newDiv.style.borderRadius = (@properties.borderRadius) + 'px'
 		newDiv.style.boxShadow = @properties.boxShadow
+
 		newDiv.style.backgroundImage = 'url(' + @properties.image + ')'
+		if !@properties.image
+			newDiv.style.backgroundImage = 'none'
 
 		# Visible property
 		if @properties.visible == true
@@ -189,58 +209,6 @@ class Layer
 
 		newDiv.style.opacity = @properties.opacity
 		newDiv.style.transform = 'scale(' + @properties.scale + ')'
-
-	# Animations
-	animates: (event, x, time, curve) ->
-		switch event
-			when 'opacity'
-				$('#' + @name).velocity({ opacity: x }, time, curve)
-				console.log 'Velocity Event: ' + event
-			when 'top'
-				$('#' + @name).velocity({ top: x + 'px' }, time, curve)
-				console.log 'Velocity Event: ' + event
-			when 'bottom'
-				$('#' + @name).velocity({ bottom: x + 'px' }, time, curve)
-				console.log 'Velocity Event: ' + event
-			when 'x'
-				$('#' + @name).velocity({ left: x + 'px' }, time, curve)
-				console.log 'Velocity Event: ' + event
-			when 'y'
-				$('#' + @name).velocity({ right: x + 'px' }, time, curve)
-				console.log 'Velocity Event: ' + event
-			when 'translateX'
-				$('#' + @name).velocity({ translateX: x }, time, curve)
-				console.log 'Velocity Event: ' + event
-			when 'translateY'
-				$('#' + @name).velocity({ translateY: x }, time, curve)
-				console.log 'Velocity Event: ' + event
-			when 'rotateZ'
-				$('#' + @name).velocity({ rotateZ: x }, time, curve)
-				console.log 'Velocity Event: ' + event
-			when 'rotateX'
-				$('#' + @name).velocity({ rotateX: x }, time, curve)
-				console.log 'Velocity Event: ' + event
-			when 'rotateY'
-				$('#' + @name).velocity({ rotateY: x }, time, curve)
-				console.log 'Velocity Event: ' + event
-			when 'width'
-				$('#' + @name).velocity({ width: x }, time, curve)
-				console.log 'Velocity Event: ' + event
-			when 'height'
-				$('#' + @name).velocity({ height: x }, time, curve)
-				console.log 'Velocity Event: ' + event
-			when 'backgroundColor'
-				$('#' + @name).velocity({ backgroundColor: x }, time, curve)
-				console.log 'Velocity Event: ' + event
-			when 'borderRadius'
-				$('#' + @name).velocity({ borderRadius: x }, time, curve)
-				console.log 'Velocity Event: ' + event
-			when 'boxShadow'
-				$('#' + @name).velocity({ boxShadow: x }, time, curve)
-				console.log 'Velocity Event: ' + event
-			when 'scale'
-				$('#' + @name).velocity({ scale: x }, time, curve)
-				console.log 'Velocity Event: ' + event
 
 	# Animations
 	@animation = {
@@ -277,8 +245,7 @@ class Layer
 		  backgroundColor: @animation.backgroundColor,
 		  borderRadius: @animation.borderRadius,
 		  boxShadow: @animation.boxShadow,
-		  scale: @animation.scale }, options: { duration: (time * 1000), easing: curve } }
-		]
+		  scale: @animation.scale }, options: { duration: (time * 1000), easing: curve } } ]
 
 		$.Velocity.RunSequence(animationSequence);
 
@@ -348,7 +315,6 @@ class Layer
 		$(parentID).append($('#' + @name))
 		child = document.getElementById('' + @name)
 		child.style.position = 'relative'
-
 
 # ----------------------- #
 # --- BackgroundLayer --- #
