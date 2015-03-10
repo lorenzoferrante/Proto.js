@@ -128,7 +128,7 @@ Now let's talk about animations and events. I decided to use Velocity.js instead
 /* -- SYNTAX -- */
 layer.animate({ name : value }, time, easing)
 /* -- EXAMPLE -- */
-layerA.animate({ width: 100 }, 1)
+layerA.animate({ width: 100 }, 1, linear)
 ```
 It's also possible to have simultaneous animations: 
 
@@ -138,7 +138,7 @@ layerA.animate({
 	height: 200, 
 	backgroundColor: '#009688',
 	rotateZ: 45
-}, 2)
+}, 2, easeInOut)
 ```
 
 Here's the list of animations' name (updated continuously) :
