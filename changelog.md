@@ -1,5 +1,8 @@
 ## CHANGELOG
 
+* v. 1.7.5
+  * Added the <code>include()</code> method that allow to include external Javascript libraries such as Angular.js, Ember, Three.js and many more.
+
 * v. 1.7.0
   * Now the <code>animate()</code> method supports simultaneous animations
   * Minor bug fixes
