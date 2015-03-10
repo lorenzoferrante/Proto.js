@@ -126,36 +126,36 @@ Now let's talk about animations and events. I decided to use Velocity.js instead
 
 ```javascript
 /* -- SYNTAX -- */
-layer.animate(animation_name, animation_property, animation_duration)
+layer.animate({ name : value }, time, easing)
 /* -- EXAMPLE -- */
-layerA.animate('x', 200, 2000)
-layerB.animate('rotateY', 80, 1000)
-layerB.animate('backgroundColor', '#ff00ff', 750)
+layerA.animate({ width: 100 }, 1)
+```
+It's also possible to have simultaneous animations: 
+
+```javascript
+layerA.animate({ 
+	width: 100,
+	height: 200, 
+	backgroundColor: '#009688',
+	rotateZ: 45
+}, 2)
 ```
 
 Here's the list of event's name (updated continuously) :
+- width
+- height
 - opacity
 - top
 - bottom
-- x
-- y
-- translateX
-- translateY
+- left
+- right
 - rotateX
 - rotateY
 - rotateZ
-- width
-- height
 - backgroundColor
 - borderRadius
 - boxShadow
 - scale
-
-Animation also have easing functions and they are specified in the fourth animation function's parameter. So an animation with easing will be: 
-
-```javascript
-layerB.animate('x', 500, 2000, [.07, .68, .62, .59])
-```
 
 Proto.js has five standard easing functions that you can easily use when animating:
 
