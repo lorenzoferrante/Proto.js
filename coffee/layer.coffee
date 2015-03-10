@@ -1,14 +1,13 @@
 # ---------------- TO DO'S ---------------- #
-# - Insert style property
-# - Add blur effect
 # - Add Text layer
+# - Correct center property for superlayer
 # ----------------------------------------- #
 
 # ------- A U T H O R -------
 # ---------------------------
 # - Lorenzo Ferrante © 2015 -
 # --------- Proto.js --------
-# --------- v. 1.6.5 --------
+# --------- v. 1.7.0 --------
 # ---------------------------
 # ------- A U T H O R -------
 
@@ -87,9 +86,8 @@ if Detect.isTablet()
 # -------------------- #
 # --- Gloabal Vars --- #
 # -------------------- #
-screen = {}
-screen.width = $(window).width()
-screen.height = $(window).height()
+screenWidth = window.innerWidth
+screenHeight = $(document).height()
 
 linear = [0, 0, 1, 1]
 ease = [.25, .1, .25, 1]
@@ -193,7 +191,7 @@ class Layer
 		newDiv.style.transform = 'scale(' + @properties.scale + ')'
 
 	# Animations
-	animate: (event, x, time, curve) ->
+	animates: (event, x, time, curve) ->
 		switch event
 			when 'opacity'
 				$('#' + @name).velocity({ opacity: x }, time, curve)
@@ -242,7 +240,47 @@ class Layer
 				console.log 'Velocity Event: ' + event
 			when 'scale'
 				$('#' + @name).velocity({ scale: x }, time, curve)
-				console.log 'Velocity Event: ' + event	
+				console.log 'Velocity Event: ' + event
+
+	# Animations
+	@animation = {
+		width: @width
+		height: @height
+		opacity: @opacity
+		top: @top
+		bottom: @bottom
+		left: @x
+		right: @y
+		rotateX: @rotateX
+		rotateY: @rotateY
+		rotateZ: @rotateZ
+		backgroundColor: @backgroundColor
+		borderRadius: @borderRadius
+		boxShadow: @boxShadow
+		scale: @scale
+	}
+
+	animate: (@animation, time, curve) ->
+		$layer = $('#' + @name)
+
+		animationSequence = [
+		  { elements: $layer, properties: { width: @animation.width, 
+		  height: @animation.height,
+		  opacity: @animation.opacity,
+		  top: @animation.top,
+		  bottom: @animation.bottom,
+		  left: @animation.left,
+		  right: @animation.right,
+		  rotateX: @animation.rotateX,
+		  rotateY: @animation.rotateY,
+		  rotateZ: @animation.rotateZ,
+		  backgroundColor: @animation.backgroundColor,
+		  borderRadius: @animation.borderRadius,
+		  boxShadow: @animation.boxShadow,
+		  scale: @animation.scale }, options: { duration: (time * 1000), easing: curve } }
+		]
+
+		$.Velocity.RunSequence(animationSequence);
 
 	# Edit properties			
 	edit: (@properties) ->
@@ -299,7 +337,6 @@ class Layer
 
 		child.style.opacity = @properties.opacity
 		child.style.transform = 'scale(' + @properties.scale + ')'
-
 
 	# Delete layer - make it hidden
 	delete: () ->
