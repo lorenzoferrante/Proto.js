@@ -122,7 +122,7 @@ Let's see what are the available properties for the moment:
 
 ## ![events](https://cloud.githubusercontent.com/assets/1908782/6529069/897e4b36-c426-11e4-87d2-c3d7e03aea94.png)
 
-Now let's talk about animations and events. I decided to use Velocity.js instead of jQuery for its better performance and speed. It's very simple to implement an event. Below the list of the possible (for the moment) animations, and how to use them.
+Now let's talk about animations and events. I decided to use Velocity.js instead of jQuery for its better performance and speed. It's very simple to implement an animation. Below the list of the possible (for the moment) animations, and how to use them.
 
 ```javascript
 /* -- SYNTAX -- */
@@ -141,7 +141,7 @@ layerA.animate({
 }, 2)
 ```
 
-Here's the list of event's name (updated continuously) :
+Here's the list of animations' name (updated continuously) :
 - width
 - height
 - opacity
